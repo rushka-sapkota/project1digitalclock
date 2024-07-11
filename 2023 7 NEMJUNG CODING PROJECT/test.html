@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="C:\Users\Audio6\Desktop\2023 7 NEMJUNG CODING PROJECT\test.css">
+    <title>Digital Clock</title>
+
+</head>
+<body>
+    <div class="digital-clock">
+        <!-- Your existing clock code -->
+
+        <!-- Stopwatch Section -->
+        <div class="stopwatch">
+            <p>Stopwatch</p>
+            <button onclick="startStopwatch()">Start</button>
+            <button onclick="stopStopwatch()">Stop</button>
+            <button onclick="resetStopwatch()">Reset</button>
+            <p id="stopwatchDisplay">00:00:00</p>
+        </div>
+
+        <!-- International Clock System -->
+        <div class="international-clocks">
+            <div class="international-clock" id="newYorkClock">
+                <p>New York</p>
+                <p id="newYorkTime"></p>
+            </div>
+            <div class="international-clock" id="tokyoClock">
+                <p>Tokyo</p>
+                <p id="tokyoTime"></p>
+            </div>
+            <div class="international-clock" id="londonClock">
+                <p>London</p>
+                <p id="londonTime"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Your existing script for the digital clock
+
+        // Stopwatch Logic
+        let stopwatchInterval;
+        let stopwatchTime = 0;
+
+        function startStopwatch() {
+            stopwatchInterval = setInterval(updateStopwatch, 1000);
+        }
+
+        function stopStopwatch() {
+            clearInterval(stopwatchInterval);
+        }
+
+        function resetStopwatch() {
+            clearInterval(stopwatchInterval);
+            stopwatchTime = 0;
+            updateStopwatch();
+        }
+
+        function updateStopwatch() {
+            const hours = Math.floor(stopwatchTime / 3600);
+            const minutes = Math.floor((stopwatchTime % 3600) / 60);
+            const seconds = stopwatchTime % 60;
+            document.getElementById('stopwatchDisplay').innerText = ${formatTime(hours)}:${formatTime(minutes)}:${formatTime(seconds)};
+            stopwatchTime++;
+        }
+
+        function formatTime(time) {
+            return time < 10 ? $6{time} : time;
+        }
+
+        // International Clocks Logic
+        function updateInternationalClocks() {
+            const newYorkTime = getFormattedTime(-5); // UTC-5 for New York
+            const tokyoTime = getFormattedTime(9); // UTC+9 for Tokyo
+            const londonTime = getFormattedTime(0); // UTC for London
+
+            document.getElementById('newYorkTime').innerText = newYorkTime;
+            document.getElementById('tokyoTime').innerText = tokyoTime;
+            document.getElementById('londonTime').innerText = londonTime;
+        }
+
+        function getFormattedTime(offset) {
+            const utcTime = new Date();
+            const localTime = new Date(utcTime.getTime() + offset * 60 * 60 * 1000);
+            const hours = localTime.getHours();
+            const minutes = localTime.getMinutes();
+            return ${formatTime(hours)}:${formatTime(minutes)};
+        }
+
+        // Update international clocks every second
+        setInterval(updateInternationalClocks, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<input id="num1" type="number"/>
+	<input id="num2" type="number"/>
+	<button onclick="add()">
+		+
+	</button>
+	<div id="result"></div>
+	<button onclick="subtract()">
+		-
+	</button>
+	<button onclick="divide()">
+		/
+	</button>
+	<button onclick="multiply()">
+		*
+	</button>
+	<div id="answer"></div>
+	<script>
+		let a= document.getElementById("num1");
+		let b= document.getElementById("num2"); 
+		let res= document.getElementById("result");
+		function add(){
+		if (!a.value।।!b.value) {
+			res.innerHTML="Please fill aA the fields";
+			num1.style.boderColor="red";
+			num2.style.borderColor="red";
+		}else{
+			let sum=parseInt (a.value) + parseInt(b.value);
+			res.innerHTML="The sum is "+sum; 
+		}
+		function subtract(){
+		if (!a.value।।!b.value) {
+			res.innerHTML="Please fill aA the fields";
+			num1.style.boderColor="red";
+			num2.style.borderColor="red";
+		}else{
+			let difference=parseInt (a.value) - parseInt(b.value);
+			res.innerHTML="The subtraction is "+difference; 
+		}
+		function divide(){
+		if (!a.value।।!b.value) {
+			res.innerHTML="Please fill aA the fields";
+			num1.style.boderColor="red";
+			num2.style.borderColor="red";
+		}else{
+			let division=parseInt (a.value) / parseInt(b.value);
+			res.innerHTML="The division is"+ division
+		}
+		function multiply(){
+		if (!a.value।।!b.value) {
+			res.innerHTML="Please fill aA the fields";
+			num1.style.boderColor="red";
+			num2.style.borderColor="red";
+		}else{
+			let multiplication=parseInt (a.value) * parseInt(b.value);
+			res.innerHTML="The multiplication is" +multiplication
+		}
+		
+	</script>
+</body>
+</html>
